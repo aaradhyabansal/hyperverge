@@ -192,7 +192,7 @@ export default function SmallCard() {
                     placeholder="Enter task name"
                   />
                 </div>
-                <div className="flex flex-col mb-4">
+cd                 <div className="flex flex-col mb-4">
                   <label className="mb-2 text-sm font-medium text-gray-700">
                     End Time
                   </label>

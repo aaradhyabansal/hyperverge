@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="grid sm:grid-cols-3 grid-cols-1 bg-gray-900 text-white ">
       <div className="col-span-1">
-        <NewsFeed />
+        <NewsFeed/>
       </div>
 
       <div className="col-span-2">

@@ -191,31 +191,13 @@ export default function SmallCard() {
             <img src="/icons/github.png" alt="GitHub" className="w-20 h-20" />
           </a>
         </div>
-        <div className="flex flex-col items-center p-5 mt-10 h-[40%] w-[90%] bg-gradient-to-br from-green-200 to-blue-500 border-t border-gray-300 shadow-lg rounded-lg ml-5 mb-8">
-          <h2 className="text-2xl font-bold mb-4">Stocks</h2>
-          <div className="mb-4 text-lg text-center">
-            {Object.entries(stock).map(([symbol, data]: any) => (
-              <div key={symbol} className="mb-4">
-                <h2>{symbol}</h2>
-                <p>Open: {data["1. open"]}</p>
-                <p>High: {data["2. high"]}</p>
-                <p>Low: {data["3. low"]}</p>
-                <p>Close: {data["4. close"]}</p>
-                <p>Volume: {data["5. volume"]}</p>
-              </div>
-            ))}
-          </div>
-          <button
-            onClick={getAllStockData}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-          >
-            Get Stocks Info
-          </button>
-        </div>
+       
+         
+        
       </div>
 
       {/* Right Column */}
-      <div className="items-right pl-6 pt-4 pr-4 overflow-y-scroll">
+      <div className="items-right pl-6 pt-4 pr-4 overflow-y-scroll overflow-x-hidden scrollbar-hidden">
         <iframe
           className="border-radius:12px ml-5"
           src="https://open.spotify.com/embed/playlist/7J49McjYGxsS4YR4x29i2K?utm_source=generator"
@@ -320,18 +302,15 @@ cd                 <div className="flex flex-col mb-4">
         </div>
 
         {/* Random Quote Generator */}
-        <div className="flex flex-col items-center p-5 mt-10 h-40% w-90% bg-gradient-to-br from-blue-200 to-blue-500 border-t border-gray-300 shadow-lg rounded-lg ml-5 mb-8">
-          <h2 className="text-2xl font-bold mb-4">Random Quote</h2>
-          <p className="mb-4 text-lg text-center">
-            {quote || "Click the button to generate a quote!"}
-          </p>
-          <button
-            onClick={generateQuote}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-          >
-            Generate Quote
-          </button>
-        </div>
+        <div
+  className="flex flex-col items-center p-5 mt-10 h-40% w-90% bg-cover bg-center border-t border-gray-300 shadow-lg rounded-lg ml-5 mb-8"
+  style={{ backgroundImage: "url('/icons/sunset.jpg')" }}
+>
+  <h2 className="text-2xl font-bold mb-4">Random Quote</h2>
+  <p className="mb-4 text-lg text-center">
+    {quote || "No quote available."}
+  </p>
+</div>
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+/* Define the keyframes for the animation */
+@keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.05); /* Adjust scale value as needed */
+    }
+  }
+  
+  /* Apply the animation to each widget */
+  .weather-widget {
+    animation: scaleUp 0.5s ease-in-out forwards;
+  }
+  
+  .google-slides-widget {
+    animation: scaleUp 0.5s ease-in-out forwards;
+    animation-delay: 0.5s; /* Delays animation by 0.5 seconds */
+  }
+  
+  .screen-time-widget {
+    animation: scaleUp 0.5s ease-in-out forwards;
+    animation-delay: 1s; /* Delays animation by 1 second */
+  }
+  

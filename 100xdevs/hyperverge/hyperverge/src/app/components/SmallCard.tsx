@@ -1,5 +1,11 @@
 "use client";
-
+interface RawStockData {
+  "1. open": string;
+  "2. high": string;
+  "3. low": string;
+  "4. close": string;
+  "5. volume": string;
+}
 import { useEffect, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -23,6 +29,7 @@ export default function SmallCard() {
     "Life is what happens when you're busy making other plans.",
   ];
   const [quote, setQuote] = useState("");
+  const [stock, setStock] = useState([{}]);
 
   useEffect(() => {
     async function fetchTime() {
@@ -44,6 +51,40 @@ export default function SmallCard() {
     const interval = setInterval(fetchTime, 60000);
     return () => clearInterval(interval);
   }, []);
+
+  // const randomSymbols: string[] = [];
+  // while (randomSymbols.length < 5) {
+  //   const randomSymbol =
+  //     stockSymbols[Math.floor(Math.random() * stockSymbols.length)];
+  //   if (!randomSymbols.includes(randomSymbol)) {
+  //     randomSymbols.push(randomSymbol);
+  //   }
+  // }
+  const stockSymbols = [
+    "ZOMATO.BSE",
+    "RELIANCE.BSE",
+    "BAJAJ-AUTO.BSE",
+    "MRF.BSE,",
+    "TATAPOWER.BSE",
+  ];
+  async function getStockData(symbol: string) {
+    console.log("heyy");
+    const apiKey = "08N91ZJ7D59VE8R2";
+    const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=${apiKey}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const time_series = data["Time Series (Daily)"];
+    const dates = Object.keys(time_series);
+    const firstDate = dates[0];
+    const firstDateData = time_series[firstDate];
+    return { symbol, firstDateData };
+  }
+
+  async function getAllStockData() {
+    const promises = await stockSymbols.map(getStockData);
+    const result = await Promise.all(promises);
+    setStock(result);
+  }
 
   const handleAddTask = (e: React.FormEvent) => {
     e.preventDefault();
@@ -149,6 +190,27 @@ export default function SmallCard() {
           >
             <img src="/icons/github.png" alt="GitHub" className="w-20 h-20" />
           </a>
+        </div>
+        <div className="flex flex-col items-center p-5 mt-10 h-[40%] w-[90%] bg-gradient-to-br from-green-200 to-blue-500 border-t border-gray-300 shadow-lg rounded-lg ml-5 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Stocks</h2>
+          <div className="mb-4 text-lg text-center">
+            {Object.entries(stock).map(([symbol, data]: any) => (
+              <div key={symbol} className="mb-4">
+                <h2>{symbol}</h2>
+                <p>Open: {data["1. open"]}</p>
+                <p>High: {data["2. high"]}</p>
+                <p>Low: {data["3. low"]}</p>
+                <p>Close: {data["4. close"]}</p>
+                <p>Volume: {data["5. volume"]}</p>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={getAllStockData}
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          >
+            Get Stocks Info
+          </button>
         </div>
       </div>
 

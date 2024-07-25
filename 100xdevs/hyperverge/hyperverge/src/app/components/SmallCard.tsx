@@ -150,18 +150,6 @@ export default function SmallCard() {
             <img src="/icons/github.png" alt="GitHub" className="w-20 h-20" />
           </a>
         </div>
-        <div className="flex flex-col items-center p-5 mt-10 h-40% w-90% bg-gradient-to-br from-blue-200 to-blue-500 border-t border-gray-300 shadow-lg rounded-lg ml-5 mb-8">
-          <h2 className="text-2xl font-bold mb-4">Random Quote</h2>
-          <p className="mb-4 text-lg text-center">
-            {quote || "Click the button to generate a quote!"}
-          </p>
-          <button
-            onClick={generateQuote}
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-          >
-            Generate Quote
-          </button>
-        </div>
       </div>
 
       {/* Right Column */}
@@ -270,6 +258,18 @@ export default function SmallCard() {
         </div>
 
         {/* Random Quote Generator */}
+        <div className="flex flex-col items-center p-5 mt-10 h-40% w-90% bg-gradient-to-br from-blue-200 to-blue-500 border-t border-gray-300 shadow-lg rounded-lg ml-5 mb-8">
+          <h2 className="text-2xl font-bold mb-4">Random Quote</h2>
+          <p className="mb-4 text-lg text-center">
+            {quote || "Click the button to generate a quote!"}
+          </p>
+          <button
+            onClick={generateQuote}
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+          >
+            Generate Quote
+          </button>
+        </div>
       </div>
     </div>
   );

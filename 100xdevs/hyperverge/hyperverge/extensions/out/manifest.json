@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Hyperverge",
+  "version": "0.1.0",
+  "description": "A full-page Chrome extension built with Next.js",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}

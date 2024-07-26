@@ -10,11 +10,11 @@ export default function NewsFeed() {
   };
 
   return (
-    <div className="flex flex-col p-5 h-screen">
+    <div className="flex flex-col p-5 h-screen  ">
       {/* Weather Section */}
 
       {/* Twitter Feed Container */}
-      <div className="w-[350px] h-[95%] overflow-y-scroll bg-white rounded-lg shadow-lg p-4">
+      <div className="w-[350px] h-[100%] overflow-y-scroll bg-white rounded-lg shadow-lg p-4  bg-gray-900 ">
         <a
           className="twitter-timeline"
           href="https://twitter.com/BrutIndia?ref_src=twsrc%5Etfw"
